@@ -1,20 +1,20 @@
 class AgentisPay < Formula
   desc "Agentis Pay CLI - Pix payments with MCP agent support"
   homepage "https://agentispay.com"
-  version "0.1.1"
+  version "0.1.2"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.1/agentis-pay-v0.1.1-darwin-arm64.tar.gz"
-    sha256 "46fe5462cd1156d8e41eb4a6a42b65a4221cfdb8c54912c24903629eea8ada90"
+    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.2/agentis-pay-v0.1.2-darwin-arm64.tar.gz"
+    sha256 "8703de1dd670f303f8d1d0efdbae3d679ebe5e89daa93afd9c6412c5f9a8e58a"
   elsif OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.1/agentis-pay-v0.1.1-darwin-x64.tar.gz"
-    sha256 "24065b6743988254e43d6a92832dd176462fb26c726f353e1bb8828c75b8f8fe"
+    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.2/agentis-pay-v0.1.2-darwin-x64.tar.gz"
+    sha256 "a16d612cd800f2f16d9f88fd72d2a373149c4c597078209ead8173eda75c204e"
   elsif OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.1/agentis-pay-v0.1.1-linux-x64.tar.gz"
-    sha256 "a000a0fa594d63c297cf71fd4f5013a5a6c364e8752c9520dca618a156b32847"
+    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.2/agentis-pay-v0.1.2-linux-x64.tar.gz"
+    sha256 "352a57fa92b791a2d96a5365653de0e64138c224a83be5ed46fcca02dc1eeaa0"
   elsif OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.1/agentis-pay-v0.1.1-linux-arm64.tar.gz"
-    sha256 "aa25f7eef1a841078ac94c18cc2998ff5c3f4ce2192e6bbabd28658c701ba53b"
+    url "https://github.com/bipa-app/homebrew-tap/releases/download/v0.1.2/agentis-pay-v0.1.2-linux-arm64.tar.gz"
+    sha256 "27cfd5ed01623d517d1c185c6d0b558288b372314f64e0f0b5be2f28678135f8"
   end
 
   def install
