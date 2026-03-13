@@ -10,7 +10,6 @@
 
 <p align="center">
   <a href="https://agentispay.com">Website</a> ·
-  <a href="https://github.com/bipa-app/agentis-pay">Source</a> ·
   <a href="https://github.com/bipa-app/agentispay/releases">Releases</a>
 </p>
 
@@ -99,8 +98,6 @@ This repository hosts pre-built binaries for every release. The managed installe
 ## Links
 
 - **Website**: [agentispay.com](https://agentispay.com)
-- **Source code**: [github.com/bipa-app/agentis-pay](https://github.com/bipa-app/agentis-pay)
-- **Design system**: [agentispay-ds.netlify.app](https://agentispay-ds.netlify.app)
 
 ## License
 
