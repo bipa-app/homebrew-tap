@@ -1,5 +1,5 @@
 ---
-name: bipa-cli
+name: bipa
 description: Use Bipa CLI to make Pix payments, check balances, analyze transaction history, and decode BR codes for AI agents. MUST use this skill whenever the user mentions paying someone via Pix, checking their balance, reviewing transactions, scanning a Pix QR code, setting up Bipa CLI, or asks the agent to handle any Brazilian instant payment. Also use when the user wants to automate recurring payments, detect duplicate transactions, or compose multi-step financial workflows. Use this skill even when the user just mentions "Pix", "Agentis", "BRL transfer", "pagamento", "saldo", or wants to send money to a CPF, email, phone, or CNPJ in Brazil.
 ---
 
@@ -86,35 +86,35 @@ Login now requires an explicit method flag:
 
 ```bash
 # OAuth login — prints URL for agent-friendly workflows
-bipa-cli login --web
+bipa login --web
 
 # OAuth login — opens browser automatically (human-friendly)
-bipa-cli login --web --open
+bipa login --web --open
 
 # PIN-based login via email (two-step)
-bipa-cli login --pin --email user@example.com
-bipa-cli verify <PIN>
+bipa login --pin --email user@example.com
+bipa verify <PIN>
 
 # PIN-based login via phone
-bipa-cli login --pin --phone "+55 11 99999 0000"
-bipa-cli verify <PIN>
+bipa login --pin --phone "+55 11 99999 0000"
+bipa verify <PIN>
 ```
 
-Running `bipa-cli login` without flags prints a usage summary.
+Running `bipa login` without flags prints a usage summary.
 
 For agents: prefer `--web` (prints the auth URL to stdout so you can present it to the user). For humans at the keyboard: use `--web --open`.
 
 ### Check session status
 
 ```bash
-bipa-cli whoami          # human-readable
-bipa-cli whoami -f json  # includes expires_at, expires_in_seconds, auth_method
+bipa whoami          # human-readable
+bipa whoami -f json  # includes expires_at, expires_in_seconds, auth_method
 ```
 
 ## Set Up MCP for Claude Desktop
 
 ```bash
-bipa-cli mcp install --client claude
+bipa mcp install --client claude
 # Restart Claude Desktop to pick up the change
 ```
 
@@ -140,20 +140,20 @@ Remote MCP is also available at `https://mcp.agentispay.com/mcp` with automatic 
 ## CLI Commands
 
 ```
-bipa-cli pix pay --key <PIX_KEY> --amount <BRL> --agent-message "reason" [--note "memo"]
-bipa-cli pix pay --key <PIX_KEY> --amount-cents <CENTS> --agent-message "reason"
-bipa-cli pix pay --brcode <COPIA_E_COLA> --amount <BRL> --agent-message "reason"
-bipa-cli pix balance
-bipa-cli pix history [--limit N] [TRANSACTION_ID]
-bipa-cli pix brcode <BRCODE_STRING>
-bipa-cli pix keys
-bipa-cli pix deposit
-bipa-cli pix limits
-bipa-cli pix account
-bipa-cli whoami
-bipa-cli login --web [--open]
-bipa-cli logout
-bipa-cli skill
+bipa pix pay --key <PIX_KEY> --amount <BRL> --agent-message "reason" [--note "memo"]
+bipa pix pay --key <PIX_KEY> --amount-cents <CENTS> --agent-message "reason"
+bipa pix pay --brcode <COPIA_E_COLA> --amount <BRL> --agent-message "reason"
+bipa pix balance
+bipa pix history [--limit N] [TRANSACTION_ID]
+bipa pix brcode <BRCODE_STRING>
+bipa pix keys
+bipa pix deposit
+bipa pix limits
+bipa pix account
+bipa whoami
+bipa login --web [--open]
+bipa logout
+bipa skill
 ```
 
 ## Pix Key Types
@@ -217,14 +217,14 @@ Tell the user: *"I've submitted the R$20 payment to João Silva. Please approve 
 
 **CLI:**
 ```bash
-bipa-cli pix pay --key joao@email.com --amount 20 --note "lunch" --agent-message "Paying João for lunch"
+bipa pix pay --key joao@email.com --amount 20 --note "lunch" --agent-message "Paying João for lunch"
 ```
 
 ### Pay a QR Code / Copia e Cola
 
 **Direct pay (when amount is known):**
 ```bash
-bipa-cli pix pay --brcode "<COPIA_E_COLA>" --amount 50 --agent-message "Paying invoice from QR code"
+bipa pix pay --brcode "<COPIA_E_COLA>" --amount 50 --agent-message "Paying invoice from QR code"
 ```
 
 **Decode first (when you need to read the details):**
@@ -259,8 +259,8 @@ Present a clean summary: balance in R$, last transactions grouped by direction.
 | `amount_cents must be greater than zero` | Check amount conversion |
 | `agent_message is required` | Always include why the agent is paying |
 | `rate limit exceeded` | Wait `retry_after_seconds` then retry |
-| `no active Bipa CLI session` | Run `bipa-cli login --web` |
-| `session expired` | Run `bipa-cli login --web` again |
+| `no active Bipa CLI session` | Run `bipa login --web` |
+| `session expired` | Run `bipa login --web` again |
 
 ## Transaction Statuses
 

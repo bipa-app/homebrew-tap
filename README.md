@@ -48,7 +48,7 @@ The skill teaches your agent how to:
 You can also view the skill reference directly from the CLI:
 
 ```bash
-bipa-cli skill
+bipa skill
 ```
 
 ## Install
@@ -57,7 +57,7 @@ bipa-cli skill
 curl -fsSL https://agentispay.com/install.sh | sh
 ```
 
-The managed installer places a launcher in `~/.local/bin/bipa-cli` and keeps versioned binaries under `~/.bipa-cli/`.
+The managed installer places a launcher in `~/.local/bin/bipa` and keeps versioned binaries under `~/.bipa/`.
 
 Optional flags:
 
@@ -73,19 +73,19 @@ curl -fsSL https://agentispay.com/install.sh | sh -s -- --version v0.1.2
 
 ```bash
 # Authenticate (prints URL for agents, --open to launch browser)
-bipa-cli login --web
+bipa login --web
 
 # Install the MCP server for Claude Desktop
-bipa-cli mcp install --client claude
+bipa mcp install --client claude
 
 # Check your balance
-bipa-cli pix balance
+bipa pix balance
 
 # Send a Pix payment
-bipa-cli pix pay --key alice@example.com --amount 25,00 --note "coffee" --agent-message "Paying Alice for coffee"
+bipa pix pay --key alice@example.com --amount 25,00 --note "coffee" --agent-message "Paying Alice for coffee"
 
 # View recent transactions
-bipa-cli pix history --limit 5
+bipa pix history --limit 5
 ```
 
 ## MCP tools
@@ -113,10 +113,10 @@ This repository hosts pre-built binaries for every release. The managed installe
 
 | Platform | Architecture | Asset |
 |---|---|---|
-| macOS | Apple Silicon | `bipa-cli-vX.Y.Z-darwin-arm64.tar.gz` |
-| macOS | Intel | `bipa-cli-vX.Y.Z-darwin-x64.tar.gz` |
-| Linux | x86_64 | `bipa-cli-vX.Y.Z-linux-x64.tar.gz` |
-| Linux | ARM64 | `bipa-cli-vX.Y.Z-linux-arm64.tar.gz` |
+| macOS | Apple Silicon | `bipa-vX.Y.Z-darwin-arm64.tar.gz` |
+| macOS | Intel | `bipa-vX.Y.Z-darwin-x64.tar.gz` |
+| Linux | x86_64 | `bipa-vX.Y.Z-linux-x64.tar.gz` |
+| Linux | ARM64 | `bipa-vX.Y.Z-linux-arm64.tar.gz` |
 
 ## Links
 
