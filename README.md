@@ -41,7 +41,7 @@ npx skills add bipa-app/agentispay
 
 The skill teaches your agent how to:
 - Help users open a Bipa account and complete onboarding
-- Install and authenticate the Bipa CLI CLI
+- Install and authenticate the Bipa CLI
 - Make Pix payments, check balances, decode QR codes
 - Analyze transaction history and detect patterns
 
