@@ -1,19 +1,19 @@
 ---
-name: agentis-pay
-description: Use Agentis Pay to make Pix payments, check balances, analyze transaction history, and decode BR codes for AI agents. MUST use this skill whenever the user mentions paying someone via Pix, checking their balance, reviewing transactions, scanning a Pix QR code, setting up Agentis Pay, or asks the agent to handle any Brazilian instant payment. Also use when the user wants to automate recurring payments, detect duplicate transactions, or compose multi-step financial workflows. Use this skill even when the user just mentions "Pix", "Agentis", "BRL transfer", "pagamento", "saldo", or wants to send money to a CPF, email, phone, or CNPJ in Brazil.
+name: bipa-cli
+description: Use Bipa CLI to make Pix payments, check balances, analyze transaction history, and decode BR codes for AI agents. MUST use this skill whenever the user mentions paying someone via Pix, checking their balance, reviewing transactions, scanning a Pix QR code, setting up Bipa CLI, or asks the agent to handle any Brazilian instant payment. Also use when the user wants to automate recurring payments, detect duplicate transactions, or compose multi-step financial workflows. Use this skill even when the user just mentions "Pix", "Agentis", "BRL transfer", "pagamento", "saldo", or wants to send money to a CPF, email, phone, or CNPJ in Brazil.
 ---
 
-# Agentis Pay
+# Bipa CLI
 
-Agentis Pay gives AI agents the ability to make real Pix payments in Brazil. It works as a CLI tool and as an MCP server that exposes financial tools to any MCP-compatible agent.
+Bipa CLI gives AI agents the ability to make real Pix payments in Brazil. It works as a CLI tool and as an MCP server that exposes financial tools to any MCP-compatible agent.
 
-Pix is Brazil's instant payment system — transfers settle in seconds, 24/7, free for individuals. Agentis Pay is built on Bipa's BCB-authorized financial infrastructure.
+Pix is Brazil's instant payment system — transfers settle in seconds, 24/7, free for individuals. Bipa CLI is built on Bipa's BCB-authorized financial infrastructure.
 
 ## First: Does the User Have a Bipa Account?
 
-Before anything else, find out whether the user already has a Bipa account. Agentis Pay requires one. Ask directly:
+Before anything else, find out whether the user already has a Bipa account. Bipa CLI requires one. Ask directly:
 
-> "Do you have a Bipa account? Agentis Pay uses Bipa as the underlying bank, so you'll need one to send/receive Pix."
+> "Do you have a Bipa account? Bipa CLI uses Bipa as the underlying bank, so you'll need one to send/receive Pix."
 
 ### If they DON'T have an account → help them open one
 
@@ -67,13 +67,13 @@ This step requires the mobile app — it cannot be done on the web. The user mus
 
 Once onboarding is complete, the account is fully active. The user can now receive Pix, buy/sell Bitcoin, and use all Bipa features.
 
-#### Step 4: Connect to Agentis Pay
+#### Step 4: Connect to Bipa CLI
 
-Now the user can log in to Agentis Pay and connect their agent. After this, they only need to open the Bipa app to approve or reject payments requested by their agent — everything else is automated.
+Now the user can log in to Bipa CLI and connect their agent. After this, they only need to open the Bipa app to approve or reject payments requested by their agent — everything else is automated.
 
 ### If they DO have an account → proceed to install & login
 
-## Install Agentis Pay
+## Install Bipa CLI
 
 ```bash
 # Managed installer (recommended for users and agents)
@@ -86,35 +86,35 @@ Login now requires an explicit method flag:
 
 ```bash
 # OAuth login — prints URL for agent-friendly workflows
-agentis-pay login --web
+bipa-cli login --web
 
 # OAuth login — opens browser automatically (human-friendly)
-agentis-pay login --web --open
+bipa-cli login --web --open
 
 # PIN-based login via email (two-step)
-agentis-pay login --pin --email user@example.com
-agentis-pay verify <PIN>
+bipa-cli login --pin --email user@example.com
+bipa-cli verify <PIN>
 
 # PIN-based login via phone
-agentis-pay login --pin --phone "+55 11 99999 0000"
-agentis-pay verify <PIN>
+bipa-cli login --pin --phone "+55 11 99999 0000"
+bipa-cli verify <PIN>
 ```
 
-Running `agentis-pay login` without flags prints a usage summary.
+Running `bipa-cli login` without flags prints a usage summary.
 
 For agents: prefer `--web` (prints the auth URL to stdout so you can present it to the user). For humans at the keyboard: use `--web --open`.
 
 ### Check session status
 
 ```bash
-agentis-pay whoami          # human-readable
-agentis-pay whoami -f json  # includes expires_at, expires_in_seconds, auth_method
+bipa-cli whoami          # human-readable
+bipa-cli whoami -f json  # includes expires_at, expires_in_seconds, auth_method
 ```
 
 ## Set Up MCP for Claude Desktop
 
 ```bash
-agentis-pay mcp install --client claude
+bipa-cli mcp install --client claude
 # Restart Claude Desktop to pick up the change
 ```
 
@@ -140,20 +140,20 @@ Remote MCP is also available at `https://mcp.agentispay.com/mcp` with automatic 
 ## CLI Commands
 
 ```
-agentis-pay pix pay --key <PIX_KEY> --amount <BRL> --agent-message "reason" [--note "memo"]
-agentis-pay pix pay --key <PIX_KEY> --amount-cents <CENTS> --agent-message "reason"
-agentis-pay pix pay --brcode <COPIA_E_COLA> --amount <BRL> --agent-message "reason"
-agentis-pay pix balance
-agentis-pay pix history [--limit N] [TRANSACTION_ID]
-agentis-pay pix brcode <BRCODE_STRING>
-agentis-pay pix keys
-agentis-pay pix deposit
-agentis-pay pix limits
-agentis-pay pix account
-agentis-pay whoami
-agentis-pay login --web [--open]
-agentis-pay logout
-agentis-pay skill
+bipa-cli pix pay --key <PIX_KEY> --amount <BRL> --agent-message "reason" [--note "memo"]
+bipa-cli pix pay --key <PIX_KEY> --amount-cents <CENTS> --agent-message "reason"
+bipa-cli pix pay --brcode <COPIA_E_COLA> --amount <BRL> --agent-message "reason"
+bipa-cli pix balance
+bipa-cli pix history [--limit N] [TRANSACTION_ID]
+bipa-cli pix brcode <BRCODE_STRING>
+bipa-cli pix keys
+bipa-cli pix deposit
+bipa-cli pix limits
+bipa-cli pix account
+bipa-cli whoami
+bipa-cli login --web [--open]
+bipa-cli logout
+bipa-cli skill
 ```
 
 ## Pix Key Types
@@ -217,14 +217,14 @@ Tell the user: *"I've submitted the R$20 payment to João Silva. Please approve 
 
 **CLI:**
 ```bash
-agentis-pay pix pay --key joao@email.com --amount 20 --note "lunch" --agent-message "Paying João for lunch"
+bipa-cli pix pay --key joao@email.com --amount 20 --note "lunch" --agent-message "Paying João for lunch"
 ```
 
 ### Pay a QR Code / Copia e Cola
 
 **Direct pay (when amount is known):**
 ```bash
-agentis-pay pix pay --brcode "<COPIA_E_COLA>" --amount 50 --agent-message "Paying invoice from QR code"
+bipa-cli pix pay --brcode "<COPIA_E_COLA>" --amount 50 --agent-message "Paying invoice from QR code"
 ```
 
 **Decode first (when you need to read the details):**
@@ -259,8 +259,8 @@ Present a clean summary: balance in R$, last transactions grouped by direction.
 | `amount_cents must be greater than zero` | Check amount conversion |
 | `agent_message is required` | Always include why the agent is paying |
 | `rate limit exceeded` | Wait `retry_after_seconds` then retry |
-| `no active Agentis Pay session` | Run `agentis-pay login --web` |
-| `session expired` | Run `agentis-pay login --web` again |
+| `no active Bipa CLI session` | Run `bipa-cli login --web` |
+| `session expired` | Run `bipa-cli login --web` again |
 
 ## Transaction Statuses
 
@@ -279,4 +279,4 @@ Present a clean summary: balance in R$, last transactions grouped by direction.
 - Rate limits: 5 payments/min, 20 brcode decodes/min.
 - Credentials stored in OS keychain (macOS Keychain, Windows Credential Manager).
 - Transaction details include structured `sections` with labeled fields for full receipt info.
-- Agentis Pay currently supports Pix. Bitcoin, stablecoins (USDC/USDT), and Lightning are coming soon via the same Bipa infrastructure.
+- Bipa CLI currently supports Pix. Bitcoin, stablecoins (USDC/USDT), and Lightning are coming soon via the same Bipa infrastructure.
