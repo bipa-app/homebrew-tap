@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://agentispay.com">
-    <img src="assets/logo.png" alt="Agentis Pay" width="500" />
+    <img src="assets/logo.png" alt="Bipa CLI" width="500" />
   </a>
 </p>
 
@@ -16,9 +16,9 @@
 
 ---
 
-## What is Agentis Pay?
+## What is Bipa CLI?
 
-Agentis Pay gives AI agents a programmable payment account. Agents can check balances, read transaction history, and send Pix transfers — all through a secure MCP (Model Context Protocol) server that plugs into Claude, ChatGPT, Cursor, Windsurf, VS Code, and any MCP-compatible host.
+Bipa CLI gives AI agents a programmable payment account. Agents can check balances, read transaction history, and send Pix transfers — all through a secure MCP (Model Context Protocol) server that plugs into Claude, ChatGPT, Cursor, Windsurf, VS Code, and any MCP-compatible host.
 
 ### Key capabilities
 
@@ -33,7 +33,7 @@ Agentis Pay gives AI agents a programmable payment account. Agents can check bal
 
 ## Agent Skill
 
-Install the Agentis Pay skill to give your AI agent full knowledge of how to use Agentis Pay — including account setup, Pix payments, and all available tools:
+Install the Bipa CLI skill to give your AI agent full knowledge of how to use Bipa CLI — including account setup, Pix payments, and all available tools:
 
 ```bash
 npx skills add bipa-app/agentispay
@@ -41,14 +41,14 @@ npx skills add bipa-app/agentispay
 
 The skill teaches your agent how to:
 - Help users open a Bipa account and complete onboarding
-- Install and authenticate the Agentis Pay CLI
+- Install and authenticate the Bipa CLI
 - Make Pix payments, check balances, decode QR codes
 - Analyze transaction history and detect patterns
 
 You can also view the skill reference directly from the CLI:
 
 ```bash
-agentis-pay skill
+bipa skill
 ```
 
 ## Install
@@ -57,7 +57,7 @@ agentis-pay skill
 curl -fsSL https://agentispay.com/install.sh | sh
 ```
 
-The managed installer places a launcher in `~/.local/bin/agentis-pay` and keeps versioned binaries under `~/.agentis-pay/`.
+The managed installer places a launcher in `~/.local/bin/bipa` and keeps versioned binaries under `~/.bipa/`.
 
 Optional flags:
 
@@ -73,19 +73,19 @@ curl -fsSL https://agentispay.com/install.sh | sh -s -- --version v0.1.2
 
 ```bash
 # Authenticate (prints URL for agents, --open to launch browser)
-agentis-pay login --web
+bipa login --web
 
 # Install the MCP server for Claude Desktop
-agentis-pay mcp install --client claude
+bipa mcp install --client claude
 
 # Check your balance
-agentis-pay pix balance
+bipa pix balance
 
 # Send a Pix payment
-agentis-pay pix pay --key alice@example.com --amount 25,00 --note "coffee" --agent-message "Paying Alice for coffee"
+bipa pix pay --key alice@example.com --amount 25,00 --note "coffee" --agent-message "Paying Alice for coffee"
 
 # View recent transactions
-agentis-pay pix history --limit 5
+bipa pix history --limit 5
 ```
 
 ## MCP tools
@@ -113,10 +113,10 @@ This repository hosts pre-built binaries for every release. The managed installe
 
 | Platform | Architecture | Asset |
 |---|---|---|
-| macOS | Apple Silicon | `agentis-pay-vX.Y.Z-darwin-arm64.tar.gz` |
-| macOS | Intel | `agentis-pay-vX.Y.Z-darwin-x64.tar.gz` |
-| Linux | x86_64 | `agentis-pay-vX.Y.Z-linux-x64.tar.gz` |
-| Linux | ARM64 | `agentis-pay-vX.Y.Z-linux-arm64.tar.gz` |
+| macOS | Apple Silicon | `bipa-vX.Y.Z-darwin-arm64.tar.gz` |
+| macOS | Intel | `bipa-vX.Y.Z-darwin-x64.tar.gz` |
+| Linux | x86_64 | `bipa-vX.Y.Z-linux-x64.tar.gz` |
+| Linux | ARM64 | `bipa-vX.Y.Z-linux-arm64.tar.gz` |
 
 ## Links
 
